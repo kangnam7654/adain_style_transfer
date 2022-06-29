@@ -1,0 +1,13 @@
+main:
+  device: cuda
+  style_image: frozen.jpg
+  content_image: picasso.jpg
+  trainer:
+    num_steps: 15
+    style_weight: 10000
+    content_weight: 1
+  StyleNet:
+    model_name: vgg19
+    pretrained: True
+    num_classes: 0
+  
