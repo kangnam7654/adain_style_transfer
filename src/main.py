@@ -21,8 +21,8 @@ def main():
     device = 'cuda'
     ###
 
-    content_path = 'G:\project\style_transfer\AdaIN_style_transfer\src\data\\totoro.jpg'
-    style_path = 'G:\project\style_transfer\AdaIN_style_transfer\src\data\\frozen.jpg'
+    content_path = 'G:\project\style_transfer\AdaIN_style_transfer\src\data\\piddle.jpg'
+    style_path = 'G:\project\style_transfer\AdaIN_style_transfer\src\data\\picasso_mo.jpg'
     transform = load_transform()
     content_input = image_loader(content_path, transform=transform, device=device)
     style_input = image_loader(style_path, transform=transform, device=device)
@@ -46,7 +46,7 @@ def main():
                                 decoder=decoder,
                                 content_input=content_input,
                                 style_input=style_input,
-                                alpha=1)
+                                alpha=0.5)
     output = output.cpu()
     save_image(output, 'output.png')
 
