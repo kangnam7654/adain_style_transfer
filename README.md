@@ -31,3 +31,24 @@
 > src/model/weights/vgg19_decoder.pt
 
 <!-- </br></br> -->
+
+</br>
+
+--- 
+
+## config(default)
+
+> src/config/config.yaml
+
+</br>
+
+## requirements
+
+> src/requirements.txt
+
+</br>
+
+## Sample Run
+```
+$ python main.py
+```
