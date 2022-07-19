@@ -1,6 +1,7 @@
 from pathlib import Path
-import yaml
+import warnings
 import argparse
+import yaml
 
 import torch
 from torchvision.utils import save_image
@@ -10,6 +11,9 @@ from utils.load_transform import load_transform
 from utils.image_loader import image_loader
 from model.vgg19_encoder import vgg19_encoder
 from model.vgg19_decoder import vgg19_decoder
+
+# 불필요한 경고 출력을 방지합니다.
+warnings.filterwarnings('ignore')
 
 ROOT_DIR = Path(__file__).parent
 
