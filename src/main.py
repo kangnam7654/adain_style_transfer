@@ -18,7 +18,7 @@ def style_transfer(encoder, decoder, content_input, style_input, alpha=1.0):
     content_feature = encoder(content_input)
     style_feature = encoder(style_input)
     feature = adaptive_instance_normalization(content_feature, style_feature)
-    feature = feature * alpha + content_feature * (1 - alpha)
+    feature = feature * alpha + content_feature * (1 - alpha) # Alpha가 1에 가까울수록 스타일이 진해짐
     return decoder(feature)
 
 def main(args):
@@ -27,13 +27,12 @@ def main(args):
 
     device = config['main']['device']
 
-    # Image 불러오기
+    # image 불러오기
     content_path = config['main']['content_image']
     style_path = config['main']['style_image']
     transform = load_transform() # 이미지 변환 load
     content_input = image_loader(content_path, transform=transform, device=device) # [1, C, H, W] torch.tensor
     style_input = image_loader(style_path, transform=transform, device=device) # [1, C, H, W] torch.tensor
-
 
     # 모델 및 weight 로드
     encoder = vgg19_encoder().to(device)
