@@ -1,8 +1,8 @@
 main:
   device: cuda
-  style_image: ./src/data/frozen.jpg # style 이미지
-  content_image: ./src/data/picasso.jpg # content 이미지
-  encoder_pt_path: ./src/model/weights/vgg19_encoder.pt # Encoder의 Pretrained weight
-  decoder_pt_path: ./src/model/weights/vgg19_decoder.pt # Decoder의 Pretrained weight
-  alpha: 0.5 # 0~1, 1에 가까울 수록 스타일의 표현이 더 뚜렷히 됨
-  save_path: ./src/result/pocasso_.png # 사진 저장 경로
+  style_image: ./src/data/frozen.jpg
+  content_image: ./src/data/picasso.jpg 
+  encoder_pt_path: ./src/model/weights/vgg19_encoder.pt 
+  decoder_pt_path: ./src/model/weights/vgg19_decoder.pt 
+  alpha: 0.5 
+  save_path: ./src/result/pocasso_.png 
