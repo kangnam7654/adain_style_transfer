@@ -1,8 +1,16 @@
 main:
   device: cuda
-  style_image: ./src/data/frozen.jpg
-  content_image: ./src/data/picasso.jpg 
-  encoder_pt_path: ./src/model/weights/vgg19_encoder.pt 
+  style: ./src/data/frozen.jpg
+  content: ./src/data/picasso.jpg 
+  encoder_pt_path: ./src/model/weights/vgg19_encoder.pt
   decoder_pt_path: ./src/model/weights/vgg19_decoder.pt 
   alpha: 0.5 
-  save_path: ./src/result/pocasso_.png 
+  save_path: ./src/result/pocasso_.png
+  load_codec:
+    encoder_pt_path: ./src/model/weights/vgg19_encoder.pt
+    decoder_pt_path: ./src/model/weights/vgg19_decoder.pt
+  fourcc: DIVX
+  video_writer:
+    filename: ./test.mp4
+    fps: 25
+    frameSize: [512, 512]
