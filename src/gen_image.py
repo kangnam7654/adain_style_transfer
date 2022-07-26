@@ -6,43 +6,16 @@ import yaml
 import torch
 from torchvision.utils import save_image
 
-from utils.adain import adaptive_instance_normalization
 from utils.load_transform import load_transform
 from utils.image_loader import image_loader
-from model.vgg19_encoder import vgg19_encoder
-from model.vgg19_decoder import vgg19_decoder
+from utils.load_codec import load_codec
 
+from model.style_transfer import AdaIN_transfer
 
 # 불필요한 경고 출력을 방지합니다.
 warnings.filterwarnings('ignore')
 
 ROOT_DIR = Path(__file__).parent
-
-
-def load_codec(device, config):
-    encoder = vgg19_encoder().to(device)
-    decoder = vgg19_decoder().to(device)
-
-    encoder_pt_path = config['main']['encoder_pt_path']
-    decoder_pt_path = config['main']['decoder_pt_path']
-
-    encoder_pt = torch.load(encoder_pt_path)
-    decoder_pt = torch.load(decoder_pt_path)
-
-    encoder.load_state_dict(encoder_pt, strict=False)
-    decoder.load_state_dict(decoder_pt)
-
-    encoder = encoder.eval()
-    decoder = decoder.eval()
-    return encoder, decoder
-
-def style_transfer(encoder, decoder, content_input, style_input, alpha=1.0):
-    assert (0.0 <= alpha <= 1.0)
-    content_feature = encoder(content_input)
-    style_feature = encoder(style_input)
-    feature = adaptive_instance_normalization(content_feature, style_feature)
-    feature = feature * alpha + content_feature * (1 - alpha) # Alpha가 1에 가까울수록 스타일이 진해짐
-    return decoder(feature)
 
 def main(args):
     with open(args.config, 'r') as f:
@@ -62,7 +35,7 @@ def main(args):
     
     # Style Transfer
     with torch.no_grad():
-        output = style_transfer(encoder=encoder,
+        output = AdaIN_transfer(encoder=encoder,
                                 decoder=decoder,
                                 content_input=content_input,
                                 style_input=style_input,
