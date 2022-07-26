@@ -31,7 +31,7 @@ def main(args):
     style_input = image_loader(style_path, transform=transform, device=device) # [1, C, H, W] torch.tensor
 
     # 모델 및 weight 로드
-    encoder, decoder = load_codec(device, config)
+    encoder, decoder = load_codec(device, **config['main']['load_codec'])
     
     # Style Transfer
     with torch.no_grad():
