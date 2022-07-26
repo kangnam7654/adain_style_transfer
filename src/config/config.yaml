@@ -1,9 +1,7 @@
 main:
   device: cuda
   style: ./src/data/frozen.jpg
-  content: ./src/data/picasso.jpg 
-  encoder_pt_path: ./src/model/weights/vgg19_encoder.pt
-  decoder_pt_path: ./src/model/weights/vgg19_decoder.pt 
+  content: ./src/data/picasso.jpg
   alpha: 0.5 
   save_path: ./src/result/pocasso_.png
   load_codec:
