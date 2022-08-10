@@ -4,7 +4,7 @@ from model.vgg19_encoder import vgg19_encoder
 from model.vgg19_decoder import vgg19_decoder
 
 
-def load_codec(encoder_pt_path, decoder_pt_path, device):
+def load_codec(device, encoder_pt_path, decoder_pt_path):
     encoder = vgg19_encoder().to(device)
     decoder = vgg19_decoder().to(device)
 

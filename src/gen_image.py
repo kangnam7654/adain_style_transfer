@@ -24,8 +24,8 @@ def main(args):
     device = config['main']['device']
 
     # image 불러오기
-    content_path = config['main']['content_image']
-    style_path = config['main']['style_image']
+    content_path = config['main']['content']
+    style_path = config['main']['style']
     transform = load_transform() # 이미지 변환 load
     content_input = image_loader(content_path, transform=transform, device=device) # [1, C, H, W] torch.tensor
     style_input = image_loader(style_path, transform=transform, device=device) # [1, C, H, W] torch.tensor

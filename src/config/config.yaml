@@ -1,9 +1,9 @@
 main:
   device: cuda
-  style: ./src/data/frozen.jpg
-  content: ./src/data/picasso.jpg
-  alpha: 0.5 
-  save_path: ./src/result/pocasso_.png
+  style: ./src/data/starry_night_van_gogh.png
+  content: ./src/data/banff-pets.png
+  alpha: 2
+  save_path: ./src/result/starry_banff.png
   load_codec:
     encoder_pt_path: ./src/model/weights/vgg19_encoder.pt
     decoder_pt_path: ./src/model/weights/vgg19_decoder.pt
@@ -11,4 +11,4 @@ main:
   video_writer:
     filename: ./test.mp4
     fps: 25
-    frameSize: [512, 512]
+    frameSize: [1024, 1024]

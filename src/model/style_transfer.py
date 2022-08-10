@@ -1,4 +1,4 @@
-def calc_mean_std(feat, eps=1e-5):
+def calc_mean_std(feat, eps=1e-6):
     """
     논문의 핵심 아이디어 구현 Instance Normalization을 위한 평균과 표준편차 계산
     Instance Normalization을 구하기 위해 각 이미지의 매 채널에 대하여
@@ -48,7 +48,7 @@ def adaptive_instance_normalization(content_feat=None, style_feat=None):
     return normalized_feat * style_std.expand(size) + style_mean.expand(size)
 
 def AdaIN_transfer(encoder, decoder, content_input, style_input, alpha=1.0):
-    assert (0.0 <= alpha <= 1.0)
+    # assert (0.0 <= alpha <= 1.0)
     content_feature = encoder(content_input)
     style_feature = encoder(style_input)
     feature = adaptive_instance_normalization(content_feature, style_feature)
