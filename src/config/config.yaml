@@ -1,12 +1,12 @@
 main:
   device: cuda
-  style: ./src/data/starry_night_van_gogh.png
-  content: ./src/data/banff-pets.png
+  style: AdaIN_style_transfer/src/data/starry_night_van_gogh.png
+  content: AdaIN_style_transfer/src/data/banff-pets.png
   alpha: 2
-  save_path: ./src/result/starry_banff.png
+  save_path: AdaIN_style_transfer/src/result/starry_banff.png
   load_codec:
-    encoder_pt_path: ./src/model/weights/vgg19_encoder.pt
-    decoder_pt_path: ./src/model/weights/vgg19_decoder.pt
+    encoder_pt_path: AdaIN_style_transfer/src/model/weights/vgg19_encoder.pt
+    decoder_pt_path: AdaIN_style_transfer/src/model/weights/vgg19_decoder.pt
   fourcc: DIVX
   video_writer:
     filename: ./test.mp4
